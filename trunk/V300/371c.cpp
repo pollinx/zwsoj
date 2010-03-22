@@ -19,7 +19,7 @@ long cycleLen(long long n)
 	return count;
 }
 
-void main()
+int main()
 {
 	long L,H,max,V,i,tmp;
 	do{
@@ -36,6 +36,7 @@ void main()
 		}
 		printf("Between %ld and %ld, %ld generates the longest sequence of %ld values.\n",L,H,V,max);
 	}while(1);
+	return 0;
 }
 
 //@END_OF_SOURCE_CODE

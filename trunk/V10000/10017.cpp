@@ -14,8 +14,12 @@ void show()
 {
 	int i,j;
 	for(i=0;i<3;i++) {
-		printf("%c=>  ",i+'A');
-		for( j = 0 ; j <= ti[i] ; j++) 	printf(" %d",tower[i][j] );
+		printf("%c=>",i+'A');
+		if(ti[i]>=0) {
+			printf("  "); // two spaces
+			for( j = 0; j <= ti[i]; j++)
+				printf(" %d", tower[i][j] );
+		}
 		printf("\n");
 	}
 	printf("\n");
