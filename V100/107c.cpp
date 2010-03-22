@@ -13,12 +13,24 @@ int main()
 	{
 		cin >> w >> h;
 		if( w==0 && h==0) break;
+
+        /* special case */
+        if(w==1 && h==1) {
+        	cout  << "0 1" << endl;
+        	continue;
+        }
+		if(w==1 ) {
+            cout << "1 " << h << endl;
+            continue;
+		}
+            
 		n = 1;
 		x = 0;
 		while(1) {
-			temp =pow(n+1,x);
+			temp = pow((double)(n+1), (double)x);
 			if( temp == w ) {
-				if( h == pow(n,x) )	break; // find it
+				if( h == pow((double)n, (double)x) )
+					break; // find it
 				else x++;
 			}
 			else if(temp > w) {

@@ -3,10 +3,17 @@
 // 412 Pi
 //@BEGIN_OF_SOURCE_CODE
 
-#include <stdio.h>
-#include <math.h>
+#include <cstdio>
+#include <cmath>
 
-long MyGcd(long p,long q) 
+using namespace std;
+
+inline long abs(long x) {
+	if(x<0) return -x;
+	return x;
+}
+
+long MyGcd(long p, long q) 
 {
 	long m;
 	p = abs(p);
