@@ -1,26 +1,24 @@
-/* @JUDGE_ID: 13160xx 11172 C++ */
-// 03/25/10 11:48:35
+/* @JUDGE_ID: 13160EW 10976 C++ */
+// 2007/04/13
 
 //@BEGIN_OF_SOURCE_CODE 
 
-#include <iostream>
+#include <stdio.h> 
 
-using namespace std;
+char check(long a, long b) {
+	if(a<b) return '<';
+	if(a==b) return '=';
+	return '>';
+}
 
 int main()
 {
+
 	int n;
-	cin >> n;
-	
-	while(n-->0) {
-		int a,b;
-		cin >> a >> b;
-		if(a<b) cout << "<" << endl;
-		else if(a>b) cout << ">" << endl;
-		else cout << "=" << endl;
+	long a,b;
+	if( scanf("%d", &n) != 1 ) return 0;
+	while( n-->0 && scanf("%ld %ld", &a, &b) == 2) {
+		printf("%c\n", check(a,b) );
 	}
-
-
 	return 0;
 }
-
