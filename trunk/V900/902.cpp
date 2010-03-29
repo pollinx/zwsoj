@@ -15,9 +15,9 @@ using namespace std;
 #define PRIME 99991
 
 //unsigned int joaat_hash(int n, char* key)
-unsigned int hash(int n, char* key)
+unsigned long hash(int n, char* key)
 {
-     unsigned int hash = 0;
+     unsigned long hash = 0;
      for (int i = 0; i < n; i++) {
          hash += key[i];
          hash += (hash << 10);
@@ -29,50 +29,22 @@ unsigned int hash(int n, char* key)
      return hash % PRIME;
  }
  
- /*
-
-long hash(int n, char* str)
-{
-   long key1 = 0;
-//   int len = min<int>(5, n);
-   long t = 1;
-   for(int i = 0; i < n ; i++)
-   {
-       t = (i<<1);
-       key1 += (((int)(str[i])-'a'))<<t;
-   }
-   
-   return key1%PRIME;
-}
-
-*/
-
-/*
-inline long long toValue(int n, char* str) {
-	long long result = 0;
-	
-	for(int i=0;i<n;i++)
-		result = result*26 + (str[i] -'a'+1);
-	return result;
-}
-*/
-
-// customized Hash function
+ // customized Hash function
 string search(const int n, string pwd) {
-	vector<unsigned int> vs = vector<unsigned int>(PRIME + 1,0);
+	vector<unsigned long> vs(PRIME + 1, 0);
 	char *r = &pwd[0];
     vs[ hash(n, r) ] = 1;
-    long rv = 1; 
+    unsigned long rv = 1; 
     long len = pwd.size()-n+1;
     long rpos = 0;
     
-    for(long pos=1;pos<len;pos++) {
+    for(int pos=1;pos<len;pos++) {
         char *buf = &pwd[pos];
         
-        unsigned int cur_pw = hash(n, buf);
+        unsigned long cur_pw = hash(n, buf);
         vs[cur_pw]++;
         
-        long new_rv = vs[cur_pw]; 
+		unsigned long new_rv = vs[cur_pw]; 
         if( new_rv > rv ) {
              rpos = pos;
              r = &pwd[rpos];
@@ -122,12 +94,7 @@ int main()
     int n;
     string pwd;
     while( cin >> n >> pwd ) {
-//        clock_t start,finish;
-//        start=clock();
         cout << search(n, pwd) << endl;
-//        finish=clock();
-//        double totaltime = (double)(finish-start)/CLOCKS_PER_SEC;
-//        cout<< totaltime << " seconds"<<endl;
     }
 }
 
